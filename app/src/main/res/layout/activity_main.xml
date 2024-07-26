@@ -17,7 +17,7 @@
             app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.gojek.rickandmorty.characters.view.CharactersView
+    <com.gojek.rickandmorty.features.characters.ui.CharactersView
         android:id="@+id/charactersView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
