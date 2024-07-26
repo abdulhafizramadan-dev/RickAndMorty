@@ -2,7 +2,7 @@ package com.gojek.rickandmorty.characters.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ResultsItem(
+data class CharacterItem(
 
 	@field:SerializedName("image")
 	val image: String? = null,
@@ -18,9 +18,6 @@ data class ResultsItem(
 
 	@field:SerializedName("name")
 	val name: String? = null,
-
-	@field:SerializedName("episode")
-	val episode: List<String?>? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,

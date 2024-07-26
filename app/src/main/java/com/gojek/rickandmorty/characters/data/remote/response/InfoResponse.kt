@@ -2,7 +2,7 @@ package com.gojek.rickandmorty.characters.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class Info(
+data class InfoResponse(
 
 	@field:SerializedName("next")
 	val next: String? = null,
