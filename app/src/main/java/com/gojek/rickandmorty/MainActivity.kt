@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gojek.rickandmorty.base.presentation.MviEffect
 import com.gojek.rickandmorty.databinding.ActivityMainBinding
+import com.gojek.rickandmorty.features.characters.data.CharacterMapper
 import com.gojek.rickandmorty.features.characters.data.CharacterRepositoryImpl
 import com.gojek.rickandmorty.features.characters.domain.usecase.DefaultGetCharactersUseCase
 import com.gojek.rickandmorty.features.characters.presentation.CharactersActionProcessor
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
                     actionProcessor = CharactersActionProcessor(
                         DefaultGetCharactersUseCase(
                             CharacterRepositoryImpl(
-                                retrofit.create()
+                                api = retrofit.create(),
+                                characterMapper = CharacterMapper()
                             )
                         )
                     )
