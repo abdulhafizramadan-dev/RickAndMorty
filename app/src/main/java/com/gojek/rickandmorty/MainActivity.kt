@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.gojek.rickandmorty.base.presentation.MviEffect
 import com.gojek.rickandmorty.databinding.ActivityMainBinding
 import com.gojek.rickandmorty.features.characters.data.CharacterMapper
@@ -22,6 +23,7 @@ import com.gojek.rickandmorty.features.characters.presentation.CharactersViewSta
 import com.gojek.rickandmorty.features.characters.ui.CharactersView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,8 +34,12 @@ class MainActivity : AppCompatActivity() {
     private val viewModelFactory: ViewModelProvider.Factory =
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val chucker = OkHttpClient.Builder()
+                    .addInterceptor(ChuckerInterceptor.Builder(this@MainActivity).build())
+                    .build()
                 val retrofit = Retrofit.Builder()
                     .baseUrl("https://rickandmortyapi.com/api/")
+                    .client(chucker)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
