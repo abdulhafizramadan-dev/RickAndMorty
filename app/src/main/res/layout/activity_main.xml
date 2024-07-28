@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:msv_loadingView="@layout/layout_characters_loading"
+        app:msv_errorView="@layout/layout_error"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <com.gojek.rickandmorty.features.characters.ui.CharactersView

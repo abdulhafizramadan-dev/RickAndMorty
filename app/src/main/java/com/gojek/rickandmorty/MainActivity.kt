@@ -1,7 +1,6 @@
 package com.gojek.rickandmorty
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +14,12 @@ import com.gojek.rickandmorty.features.characters.presentation.CharactersIntent
 import com.gojek.rickandmorty.features.characters.presentation.CharactersViewModel
 import com.gojek.rickandmorty.features.characters.presentation.CharactersViewState
 import com.gojek.rickandmorty.features.characters.ui.CharactersView
-import com.kennyc.view.MultiStateView
+import com.gojek.rickandmorty.utils.getView
+import com.gojek.rickandmorty.utils.showContent
+import com.gojek.rickandmorty.utils.showError
+import com.gojek.rickandmorty.utils.showLoading
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -68,10 +72,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(state: CharactersViewState) {
-        val viewState =
-            if (state.isLoading) MultiStateView.ViewState.LOADING else MultiStateView.ViewState.CONTENT
-        binding.msvContainer.viewState = viewState
-        binding.charactersView.render(state.characters)
+        with(binding) {
+            if (state.isLoading) {
+                msvContainer.showLoading()
+                return
+            }
+            msvContainer.showContent()
+            charactersView.render(state.characters)
+        }
     }
 
     private fun produce(effect: MviEffect) {
@@ -79,8 +87,23 @@ class MainActivity : AppCompatActivity() {
             is CharactersEffect.NavigateEffect -> startActivity(effect.intent)
 
             is CharactersEffect.ShowErrorNotificationEffect -> {
-                Log.d(MainActivity::class.java.name, "produce: Error = ${effect.cause.message}")
+                with(binding) {
+                    msvContainer.showError()
+                    val tvErrorMessage = msvContainer.getView<MaterialTextView>(R.id.tv_error_message)
+                    tvErrorMessage?.text = effect.cause.message
+                    val btnTryAgain = msvContainer.getView<MaterialButton>(R.id.btn_try_again)
+                    btnTryAgain?.setOnClickListener {
+                        msvContainer.showLoading()
+                        refresh()
+                    }
+                }
             }
         }
+    }
+
+    private fun refresh() {
+        viewModel.processIntents(
+            Observable.just(CharactersIntent.SeeAllCharactersIntent)
+        )
     }
 }
