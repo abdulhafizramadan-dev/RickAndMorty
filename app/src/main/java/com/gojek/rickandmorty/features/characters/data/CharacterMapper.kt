@@ -3,8 +3,9 @@ package com.gojek.rickandmorty.features.characters.data
 import com.gojek.rickandmorty.base.mapper.Mapper
 import com.gojek.rickandmorty.features.characters.data.remote.response.CharacterItemResponse
 import com.gojek.rickandmorty.features.characters.domain.model.Character
+import javax.inject.Inject
 
-class CharacterMapper : Mapper<CharacterItemResponse, Character> {
+class CharacterMapper @Inject constructor() : Mapper<CharacterItemResponse, Character> {
     override fun map(input: CharacterItemResponse): Character {
         return with(input) {
             Character(

@@ -15,8 +15,11 @@ import com.gojek.rickandmorty.utils.ActionConstant
 import io.reactivex.Observable
 import io.reactivex.Observable.just
 import io.reactivex.ObservableTransformer
+import javax.inject.Inject
+import javax.inject.Named
 
-class CharactersViewModel(
+class CharactersViewModel @Inject constructor(
+    @Named("charactersActionProcessor")
     actionProcessor: ObservableTransformer<MviAction, MviResult>
 ) : AbstractViewModel<CharactersViewState>(
     actionProcessor = actionProcessor,

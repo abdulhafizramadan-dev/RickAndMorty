@@ -11,8 +11,11 @@ import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDet
 import io.reactivex.Observable
 import io.reactivex.Observable.just
 import io.reactivex.ObservableTransformer
+import javax.inject.Inject
+import javax.inject.Named
 
-class CharacterDetailViewModel(
+class CharacterDetailViewModel @Inject constructor(
+    @Named("characterDetailActionProcessor")
     actionProcessor: ObservableTransformer<MviAction, MviResult>
 ) : AbstractViewModel<CharacterDetailViewState>(
     actionProcessor = actionProcessor,

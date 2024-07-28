@@ -10,8 +10,9 @@ import com.gojek.rickandmorty.features.characters.presentation.CharactersResult.
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.ObservableTransformer
+import javax.inject.Inject
 
-class CharactersActionProcessor(
+class CharactersActionProcessor @Inject constructor(
     private val getCharactersUseCase: GetCharactersUseCase
 ) : ObservableTransformer<MviAction, MviResult> {
 

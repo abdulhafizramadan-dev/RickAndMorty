@@ -3,70 +3,35 @@ package com.gojek.rickandmorty.features.characterdetail.ui
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.gojek.rickandmorty.R
+import com.gojek.rickandmorty.RickAndMortyApplication
 import com.gojek.rickandmorty.base.presentation.MviEffect
 import com.gojek.rickandmorty.databinding.ActivityCharacterDetailBinding
-import com.gojek.rickandmorty.features.characterdetail.domain.usecase.DefaultGetCharacterDetailUseCase
-import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailActionProcessor
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailEffect
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailIntent
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewModel
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewState
-import com.gojek.rickandmorty.features.characters.data.CharacterMapper
-import com.gojek.rickandmorty.features.characters.data.CharacterRepositoryImpl
 import com.gojek.rickandmorty.utils.ActionConstant
 import com.jakewharton.rxbinding2.view.clicks
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
+import javax.inject.Inject
 
 class CharacterDetailActivity : AppCompatActivity() {
 
-    private val viewModelFactory: ViewModelProvider.Factory =
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                val chucker = OkHttpClient.Builder()
-                    .addInterceptor(
-                        ChuckerInterceptor.Builder(this@CharacterDetailActivity).build()
-                    )
-                    .build()
-                val retrofit = Retrofit.Builder()
-                    .baseUrl("https://rickandmortyapi.com/api/")
-                    .client(chucker)
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                return CharacterDetailViewModel(
-                    actionProcessor = CharacterDetailActionProcessor(
-                        characterDetailUseCase = DefaultGetCharacterDetailUseCase(
-                            characterRepository = CharacterRepositoryImpl(
-                                api = retrofit.create(),
-                                characterMapper = CharacterMapper()
-                            )
-                        )
-                    )
-                ) as T
-            }
-        }
-
     private lateinit var binding: ActivityCharacterDetailBinding
-    private val viewModel: CharacterDetailViewModel by viewModels { viewModelFactory }
+
+    @Inject
+    lateinit var viewModel: CharacterDetailViewModel
 
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as RickAndMortyApplication).rickAndMortyComponent.inject(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityCharacterDetailBinding.inflate(layoutInflater)

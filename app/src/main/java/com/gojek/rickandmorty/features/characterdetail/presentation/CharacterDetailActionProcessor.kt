@@ -10,8 +10,9 @@ import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDet
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.ObservableTransformer
+import javax.inject.Inject
 
-class CharacterDetailActionProcessor(
+class CharacterDetailActionProcessor @Inject constructor(
     private val characterDetailUseCase: GetCharacterDetailUseCase
 ) : ObservableTransformer<MviAction, MviResult> {
     override fun apply(upstream: Observable<MviAction>): ObservableSource<MviResult> {

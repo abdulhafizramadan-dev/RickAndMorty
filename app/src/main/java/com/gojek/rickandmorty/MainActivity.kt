@@ -28,40 +28,19 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModelFactory: ViewModelProvider.Factory =
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                val chucker = OkHttpClient.Builder()
-                    .addInterceptor(ChuckerInterceptor.Builder(this@MainActivity).build())
-                    .build()
-                val retrofit = Retrofit.Builder()
-                    .baseUrl("https://rickandmortyapi.com/api/")
-                    .client(chucker)
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                return CharactersViewModel(
-                    actionProcessor = CharactersActionProcessor(
-                        DefaultGetCharactersUseCase(
-                            CharacterRepositoryImpl(
-                                api = retrofit.create(),
-                                characterMapper = CharacterMapper()
-                            )
-                        )
-                    )
-                ) as T
-            }
-        }
-
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: CharactersViewModel by viewModels { viewModelFactory }
+
+    @Inject
+    lateinit var viewModel: CharactersViewModel
 
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as RickAndMortyApplication).rickAndMortyComponent.inject(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)

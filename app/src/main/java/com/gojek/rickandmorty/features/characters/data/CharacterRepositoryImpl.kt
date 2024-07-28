@@ -4,8 +4,9 @@ import com.gojek.rickandmorty.features.characters.data.remote.RickAndMortyApi
 import com.gojek.rickandmorty.features.characters.domain.model.Character
 import com.gojek.rickandmorty.features.characters.domain.repository.CharacterRepository
 import io.reactivex.Single
+import javax.inject.Inject
 
-class CharacterRepositoryImpl(
+class CharacterRepositoryImpl @Inject constructor(
     private val api: RickAndMortyApi,
     private val characterMapper: CharacterMapper
 ) : CharacterRepository {
