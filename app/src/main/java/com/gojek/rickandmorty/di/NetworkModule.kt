@@ -2,7 +2,7 @@ package com.gojek.rickandmorty.di
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.gojek.rickandmorty.features.characters.data.remote.RickAndMortyApi
+import com.gojek.characters.data.remote.RickAndMortyApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

@@ -49,22 +49,23 @@ dependencies {
 
     implementation(project(":base"))
     implementation(project(":features:characters:characters"))
+    implementation(project(":features:characters:characters-shared-domain"))
 
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
-    implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
+    implementation(libs.shimmer)
+    implementation(libs.multistateview)
 
-    implementation("com.google.dagger:dagger:2.51.1")
-    kapt("com.google.dagger:dagger-compiler:2.51.1")
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.retrofit)
+    implementation(libs.adapter.rxjava2)
+    implementation(libs.converter.gson)
 
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
     implementation(libs.rxbinding.kotlin)
 
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.glide)
 
     debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")

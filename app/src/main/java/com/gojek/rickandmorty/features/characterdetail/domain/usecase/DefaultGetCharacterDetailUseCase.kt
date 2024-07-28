@@ -1,7 +1,7 @@
 package com.gojek.rickandmorty.features.characterdetail.domain.usecase
 
-import com.gojek.rickandmorty.features.characters.domain.model.Character
-import com.gojek.rickandmorty.features.characters.domain.repository.CharacterRepository
+import com.gojek.characters.shared.domain.model.Character
+import com.gojek.characters.shared.domain.repository.CharacterRepository
 import io.reactivex.Single
 import javax.inject.Inject
 

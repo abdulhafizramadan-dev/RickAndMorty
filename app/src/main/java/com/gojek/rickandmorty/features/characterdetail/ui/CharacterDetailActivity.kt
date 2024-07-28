@@ -9,6 +9,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.gojek.base.presentation.MviEffect
+import com.gojek.base.utils.ActionConstant
+import com.gojek.base.utils.getView
+import com.gojek.base.utils.showContent
+import com.gojek.base.utils.showError
+import com.gojek.base.utils.showLoading
 import com.gojek.rickandmorty.R
 import com.gojek.rickandmorty.RickAndMortyApplication
 import com.gojek.rickandmorty.databinding.ActivityCharacterDetailBinding
@@ -16,11 +21,6 @@ import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDet
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailIntent
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewModel
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewState
-import com.gojek.rickandmorty.utils.ActionConstant
-import com.gojek.rickandmorty.utils.getView
-import com.gojek.rickandmorty.utils.showContent
-import com.gojek.rickandmorty.utils.showError
-import com.gojek.rickandmorty.utils.showLoading
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
 import com.jakewharton.rxbinding2.view.clicks
@@ -110,7 +110,8 @@ class CharacterDetailActivity : AppCompatActivity() {
 
     private fun refresh() {
         viewModel.processIntents(
-            Observable.just(CharacterDetailIntent.LoadCharacterDetailIntent(characterId = intent.getIntExtra(ActionConstant.CHARACTER_ID, 0)))
+            Observable.just(CharacterDetailIntent.LoadCharacterDetailIntent(characterId = intent.getIntExtra(
+                ActionConstant.CHARACTER_ID, 0)))
         )
     }
 }

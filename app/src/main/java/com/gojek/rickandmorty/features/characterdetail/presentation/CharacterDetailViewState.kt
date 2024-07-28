@@ -1,7 +1,7 @@
 package com.gojek.rickandmorty.features.characterdetail.presentation
 
 import com.gojek.base.presentation.MviState
-import com.gojek.rickandmorty.features.characters.domain.model.Character
+import com.gojek.characters.shared.domain.model.Character
 
 data class CharacterDetailViewState(
     val character: Character,

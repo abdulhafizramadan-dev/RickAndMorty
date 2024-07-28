@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gojek.base.presentation.MviAction
 import com.gojek.base.presentation.MviResult
+import com.gojek.base.utils.ViewModelFactory
 import com.gojek.rickandmorty.features.characterdetail.domain.usecase.DefaultGetCharacterDetailUseCase
 import com.gojek.rickandmorty.features.characterdetail.domain.usecase.GetCharacterDetailUseCase
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailActionProcessor
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewModel
-import com.gojek.rickandmorty.utils.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

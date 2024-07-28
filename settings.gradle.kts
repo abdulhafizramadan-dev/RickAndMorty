@@ -24,3 +24,4 @@ rootProject.name = "Rick And Morty"
 include(":app")
 include(":base")
 include(":features:characters:characters")
+include(":features:characters:characters-shared-domain")
