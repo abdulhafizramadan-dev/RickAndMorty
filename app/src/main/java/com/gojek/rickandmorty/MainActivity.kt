@@ -7,15 +7,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.gojek.rickandmorty.base.presentation.MviEffect
 import com.gojek.rickandmorty.databinding.ActivityMainBinding
-import com.gojek.rickandmorty.features.characters.data.CharacterMapper
-import com.gojek.rickandmorty.features.characters.data.CharacterRepositoryImpl
-import com.gojek.rickandmorty.features.characters.domain.usecase.DefaultGetCharactersUseCase
-import com.gojek.rickandmorty.features.characters.presentation.CharactersActionProcessor
 import com.gojek.rickandmorty.features.characters.presentation.CharactersEffect
 import com.gojek.rickandmorty.features.characters.presentation.CharactersIntent
 import com.gojek.rickandmorty.features.characters.presentation.CharactersViewModel
@@ -23,19 +17,18 @@ import com.gojek.rickandmorty.features.characters.presentation.CharactersViewSta
 import com.gojek.rickandmorty.features.characters.ui.CharactersView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Inject
+import javax.inject.Named
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
     @Inject
-    lateinit var viewModel: CharactersViewModel
+    @Named("charactersViewModelFactory")
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: CharactersViewModel by viewModels { viewModelFactory }
 
     private val disposable = CompositeDisposable()
 

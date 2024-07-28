@@ -3,9 +3,11 @@ package com.gojek.rickandmorty.features.characterdetail.ui
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.gojek.rickandmorty.R
 import com.gojek.rickandmorty.RickAndMortyApplication
@@ -20,13 +22,17 @@ import com.jakewharton.rxbinding2.view.clicks
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
+import javax.inject.Named
 
 class CharacterDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCharacterDetailBinding
 
     @Inject
-    lateinit var viewModel: CharacterDetailViewModel
+    @Named("characterDetailViewModelFactory")
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: CharacterDetailViewModel by viewModels { viewModelFactory }
 
     private val disposable = CompositeDisposable()
 
