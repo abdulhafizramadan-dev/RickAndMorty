@@ -1,6 +1,6 @@
 package com.gojek.rickandmorty.features.characterdetail.presentation
 
-import com.gojek.rickandmorty.base.presentation.MviIntent
+import com.gojek.base.presentation.MviIntent
 
 sealed class CharacterDetailIntent : MviIntent {
     data object BackPressedIntent : CharacterDetailIntent()

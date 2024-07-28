@@ -1,6 +1,6 @@
 package com.gojek.rickandmorty.features.characters.presentation
 
-import com.gojek.rickandmorty.base.presentation.MviIntent
+import com.gojek.base.presentation.MviIntent
 
 sealed class CharactersIntent : MviIntent {
     data object SeeAllCharactersIntent : CharactersIntent()

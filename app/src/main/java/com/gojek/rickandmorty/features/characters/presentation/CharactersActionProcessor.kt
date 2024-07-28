@@ -1,7 +1,7 @@
 package com.gojek.rickandmorty.features.characters.presentation
 
-import com.gojek.rickandmorty.base.presentation.MviAction
-import com.gojek.rickandmorty.base.presentation.MviResult
+import com.gojek.base.presentation.MviAction
+import com.gojek.base.presentation.MviResult
 import com.gojek.rickandmorty.features.characters.domain.usecase.GetCharactersUseCase
 import com.gojek.rickandmorty.features.characters.presentation.CharactersAction.LoadCharactersAction
 import com.gojek.rickandmorty.features.characters.presentation.CharactersAction.ShowDetailedCharacterAction

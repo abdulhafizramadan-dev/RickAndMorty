@@ -1,6 +1,6 @@
 package com.gojek.rickandmorty.features.characterdetail.presentation
 
-import com.gojek.rickandmorty.base.presentation.MviEffect
+import com.gojek.base.presentation.MviEffect
 
 sealed class CharacterDetailEffect : MviEffect {
     data object BackPressedEffect : CharacterDetailEffect()

@@ -47,6 +47,9 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    implementation(project(":base"))
+    implementation(project(":features:characters:characters"))
+
     implementation("com.facebook.shimmer:shimmer:0.5.0")
     implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
 
@@ -57,9 +60,9 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    implementation("io.reactivex.rxjava2:rxjava:2.2.8")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("com.jakewharton.rxbinding2:rxbinding-kotlin:2.2.0")
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.rxbinding.kotlin)
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
 

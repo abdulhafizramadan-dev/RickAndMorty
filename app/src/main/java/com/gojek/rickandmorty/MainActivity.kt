@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import com.gojek.rickandmorty.base.presentation.MviEffect
+import com.gojek.base.presentation.MviEffect
 import com.gojek.rickandmorty.databinding.ActivityMainBinding
 import com.gojek.rickandmorty.features.characters.presentation.CharactersEffect
 import com.gojek.rickandmorty.features.characters.presentation.CharactersIntent

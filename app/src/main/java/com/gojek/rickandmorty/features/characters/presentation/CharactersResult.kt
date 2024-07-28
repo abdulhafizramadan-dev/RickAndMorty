@@ -1,6 +1,6 @@
 package com.gojek.rickandmorty.features.characters.presentation
 
-import com.gojek.rickandmorty.base.presentation.MviResult
+import com.gojek.base.presentation.MviResult
 import com.gojek.rickandmorty.features.characters.domain.model.Character
 
 sealed class CharactersResult : MviResult {

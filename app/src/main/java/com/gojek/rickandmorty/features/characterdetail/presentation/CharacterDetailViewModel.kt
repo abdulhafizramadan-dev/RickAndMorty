@@ -1,10 +1,10 @@
 package com.gojek.rickandmorty.features.characterdetail.presentation
 
-import com.gojek.rickandmorty.base.presentation.AbstractViewModel
-import com.gojek.rickandmorty.base.presentation.MviAction
-import com.gojek.rickandmorty.base.presentation.MviEffect
-import com.gojek.rickandmorty.base.presentation.MviIntent
-import com.gojek.rickandmorty.base.presentation.MviResult
+import com.gojek.base.presentation.AbstractViewModel
+import com.gojek.base.presentation.MviAction
+import com.gojek.base.presentation.MviEffect
+import com.gojek.base.presentation.MviIntent
+import com.gojek.base.presentation.MviResult
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailAction.BackPressedAction
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailIntent.BackPressedIntent
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailResult.LoadCharacterDetailResult

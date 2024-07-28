@@ -1,6 +1,6 @@
 package com.gojek.rickandmorty.features.characters.presentation
 
-import com.gojek.rickandmorty.base.presentation.MviState
+import com.gojek.base.presentation.MviState
 import com.gojek.rickandmorty.features.characters.domain.model.Character
 
 data class CharactersViewState(

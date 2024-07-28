@@ -8,9 +8,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.gojek.base.presentation.MviEffect
 import com.gojek.rickandmorty.R
 import com.gojek.rickandmorty.RickAndMortyApplication
-import com.gojek.rickandmorty.base.presentation.MviEffect
 import com.gojek.rickandmorty.databinding.ActivityCharacterDetailBinding
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailEffect
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailIntent

@@ -1,11 +1,11 @@
 package com.gojek.rickandmorty.features.characters.presentation
 
 import android.content.Intent
-import com.gojek.rickandmorty.base.presentation.AbstractViewModel
-import com.gojek.rickandmorty.base.presentation.MviAction
-import com.gojek.rickandmorty.base.presentation.MviEffect
-import com.gojek.rickandmorty.base.presentation.MviIntent
-import com.gojek.rickandmorty.base.presentation.MviResult
+import com.gojek.base.presentation.AbstractViewModel
+import com.gojek.base.presentation.MviAction
+import com.gojek.base.presentation.MviEffect
+import com.gojek.base.presentation.MviIntent
+import com.gojek.base.presentation.MviResult
 import com.gojek.rickandmorty.features.characters.presentation.CharactersAction.ShowDetailedCharacterAction
 import com.gojek.rickandmorty.features.characters.presentation.CharactersEffect.ShowErrorNotificationEffect
 import com.gojek.rickandmorty.features.characters.presentation.CharactersIntent.SeeAllCharactersIntent

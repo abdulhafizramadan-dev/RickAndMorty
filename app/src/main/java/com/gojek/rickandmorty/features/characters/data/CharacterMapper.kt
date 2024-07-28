@@ -1,6 +1,6 @@
 package com.gojek.rickandmorty.features.characters.data
 
-import com.gojek.rickandmorty.base.mapper.Mapper
+import com.gojek.base.mapper.Mapper
 import com.gojek.rickandmorty.features.characters.data.remote.response.CharacterItemResponse
 import com.gojek.rickandmorty.features.characters.domain.model.Character
 import javax.inject.Inject

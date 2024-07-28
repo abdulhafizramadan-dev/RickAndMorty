@@ -2,8 +2,8 @@ package com.gojek.rickandmorty.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.gojek.rickandmorty.base.presentation.MviAction
-import com.gojek.rickandmorty.base.presentation.MviResult
+import com.gojek.base.presentation.MviAction
+import com.gojek.base.presentation.MviResult
 import com.gojek.rickandmorty.features.characters.data.CharacterRepositoryImpl
 import com.gojek.rickandmorty.features.characters.domain.repository.CharacterRepository
 import com.gojek.rickandmorty.features.characters.domain.usecase.DefaultGetCharactersUseCase

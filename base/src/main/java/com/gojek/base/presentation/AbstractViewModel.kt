@@ -1,4 +1,4 @@
-package com.gojek.rickandmorty.base.presentation
+package com.gojek.base.presentation
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.Observable

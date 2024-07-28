@@ -1,4 +1,4 @@
-package com.gojek.rickandmorty.base.domain
+package com.gojek.base.domain
 
 import io.reactivex.Single
 
