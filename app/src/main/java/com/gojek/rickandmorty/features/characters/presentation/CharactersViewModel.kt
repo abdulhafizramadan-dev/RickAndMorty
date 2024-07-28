@@ -44,7 +44,10 @@ class CharactersViewModel @Inject constructor(
     ): CharactersViewState {
         return when (result) {
             is LoadCharactersResult.Success -> {
-                previous.copy(characters = result.characters)
+                previous.copy(
+                    characters = result.characters,
+                    isLoading = false
+                )
             }
 
             else -> previous

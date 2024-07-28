@@ -15,6 +15,7 @@ import com.gojek.rickandmorty.features.characters.presentation.CharactersIntent
 import com.gojek.rickandmorty.features.characters.presentation.CharactersViewModel
 import com.gojek.rickandmorty.features.characters.presentation.CharactersViewState
 import com.gojek.rickandmorty.features.characters.ui.CharactersView
+import com.kennyc.view.MultiStateView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -67,6 +68,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(state: CharactersViewState) {
+        val viewState =
+            if (state.isLoading) MultiStateView.ViewState.LOADING else MultiStateView.ViewState.CONTENT
+        binding.msvContainer.viewState = viewState
         binding.charactersView.render(state.characters)
     }
 

@@ -39,7 +39,10 @@ class CharacterDetailViewModel @Inject constructor(
     ): CharacterDetailViewState {
         return when (result) {
             is LoadCharacterDetailResult.Success ->
-                previous.copy(character = result.character, isLoading = false)
+                previous.copy(
+                    character = result.character,
+                    isLoading = false
+                )
 
             else -> previous
         }

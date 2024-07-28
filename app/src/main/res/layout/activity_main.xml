@@ -17,12 +17,19 @@
             app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.gojek.rickandmorty.features.characters.ui.CharactersView
-        android:id="@+id/charactersView"
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/msv_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:msv_loadingView="@layout/layout_characters_loading"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.gojek.rickandmorty.features.characters.ui.CharactersView
+            android:id="@+id/charactersView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:clipToPadding="false" />
+    </com.kennyc.view.MultiStateView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -8,6 +8,8 @@ data class CharactersViewState(
     val characters: List<Character> = emptyList(),
 ) : MviState {
     companion object {
-        val INITIAL = CharactersViewState()
+        val INITIAL = CharactersViewState(
+            isLoading = true
+        )
     }
 }

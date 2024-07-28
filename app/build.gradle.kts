@@ -47,6 +47,9 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
+
     implementation("com.google.dagger:dagger:2.51.1")
     kapt("com.google.dagger:dagger-compiler:2.51.1")
 
