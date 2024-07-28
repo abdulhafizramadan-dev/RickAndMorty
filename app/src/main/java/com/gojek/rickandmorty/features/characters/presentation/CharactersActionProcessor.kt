@@ -2,11 +2,11 @@ package com.gojek.rickandmorty.features.characters.presentation
 
 import com.gojek.rickandmorty.base.presentation.MviAction
 import com.gojek.rickandmorty.base.presentation.MviResult
-import com.gojek.rickandmorty.features.characters.domain.model.Character
 import com.gojek.rickandmorty.features.characters.domain.usecase.GetCharactersUseCase
 import com.gojek.rickandmorty.features.characters.presentation.CharactersAction.LoadCharactersAction
 import com.gojek.rickandmorty.features.characters.presentation.CharactersAction.ShowDetailedCharacterAction
 import com.gojek.rickandmorty.features.characters.presentation.CharactersResult.LoadCharactersResult
+import com.gojek.rickandmorty.features.characters.presentation.CharactersResult.ShowDetailedCharacterResult
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.ObservableTransformer
@@ -37,9 +37,7 @@ class CharactersActionProcessor(
         }
 
     private val showDetailedCharacterSubProcessor =
-        ObservableTransformer<ShowDetailedCharacterAction, CharactersResult.ShowDetailedCharacterResult> { upstream ->
-            upstream.switchMap {
-                Observable.just(CharactersResult.ShowDetailedCharacterResult.Success(Character()))
-            }
+        ObservableTransformer<ShowDetailedCharacterAction, ShowDetailedCharacterResult> { upstream ->
+            upstream.map { action -> ShowDetailedCharacterResult.Success(action.id) }
         }
 }

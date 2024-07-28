@@ -14,4 +14,8 @@ class CharacterRepositoryImpl(
             response.results?.map { characterMapper.map(it) }
         }
     }
+
+    override fun getCharacterDetail(id: Int): Single<Character> {
+        return api.getCharacterDetail(id).map { characterMapper.map(it) }
+    }
 }

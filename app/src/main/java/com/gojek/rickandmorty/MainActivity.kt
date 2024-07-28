@@ -89,13 +89,19 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    override fun onDestroy() {
+        disposable.dispose()
+        super.onDestroy()
+    }
+
     private fun render(state: CharactersViewState) {
         binding.charactersView.render(state.characters)
     }
 
     private fun produce(effect: MviEffect) {
         when (effect) {
-            is CharactersEffect.NavigateEffect -> {}
+            is CharactersEffect.NavigateEffect -> startActivity(effect.intent)
+
             is CharactersEffect.ShowErrorNotificationEffect -> {
                 Log.d(MainActivity::class.java.name, "produce: Error = ${effect.cause.message}")
             }

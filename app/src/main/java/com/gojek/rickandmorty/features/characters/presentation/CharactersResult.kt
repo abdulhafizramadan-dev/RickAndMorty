@@ -10,7 +10,6 @@ sealed class CharactersResult : MviResult {
     }
 
     sealed class ShowDetailedCharacterResult : CharactersResult() {
-        data class Success(val character: Character) : ShowDetailedCharacterResult()
-        data class Failure(val cause: Throwable) : ShowDetailedCharacterResult()
+        data class Success(val characterId: Int) : ShowDetailedCharacterResult()
     }
 }

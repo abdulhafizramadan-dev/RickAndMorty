@@ -6,12 +6,12 @@ import com.gojek.rickandmorty.base.presentation.MviAction
 import com.gojek.rickandmorty.base.presentation.MviEffect
 import com.gojek.rickandmorty.base.presentation.MviIntent
 import com.gojek.rickandmorty.base.presentation.MviResult
-import com.gojek.rickandmorty.features.characters.domain.model.Character
 import com.gojek.rickandmorty.features.characters.presentation.CharactersAction.ShowDetailedCharacterAction
 import com.gojek.rickandmorty.features.characters.presentation.CharactersEffect.ShowErrorNotificationEffect
 import com.gojek.rickandmorty.features.characters.presentation.CharactersIntent.SeeAllCharactersIntent
 import com.gojek.rickandmorty.features.characters.presentation.CharactersResult.LoadCharactersResult
 import com.gojek.rickandmorty.features.characters.presentation.CharactersResult.ShowDetailedCharacterResult
+import com.gojek.rickandmorty.utils.ActionConstant
 import io.reactivex.Observable
 import io.reactivex.Observable.just
 import io.reactivex.ObservableTransformer
@@ -51,21 +51,18 @@ class CharactersViewModel(
     override fun inferSideEffectsFromResult(result: MviResult): List<MviEffect> {
         return when (result) {
             is ShowDetailedCharacterResult.Success ->
-                listOf(CharactersEffect.NavigateEffect(createDetailIntent(result.character)))
+                listOf(CharactersEffect.NavigateEffect(createDetailIntent(result.characterId)))
 
             is LoadCharactersResult.Failure ->
-                listOf(ShowErrorNotificationEffect(result.cause))
-
-            is ShowDetailedCharacterResult.Failure ->
                 listOf(ShowErrorNotificationEffect(result.cause))
 
             else -> emptyList()
         }
     }
 
-    private fun createDetailIntent(character: Character): Intent {
+    private fun createDetailIntent(characterId: Int): Intent {
         val intent = Intent("com.gojek.rickandmorty.action.SHOW_DETAIL")
-        intent.putExtra("character_id", character.id)
+        intent.putExtra(ActionConstant.CHARACTER_ID, characterId)
         return intent
     }
 }
