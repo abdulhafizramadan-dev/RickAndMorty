@@ -1,7 +1,6 @@
 package com.gojek.rickandmorty.features.characterdetail.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,8 +17,13 @@ import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDet
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewModel
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewState
 import com.gojek.rickandmorty.utils.ActionConstant
+import com.gojek.rickandmorty.utils.getView
+import com.gojek.rickandmorty.utils.showContent
+import com.gojek.rickandmorty.utils.showError
+import com.gojek.rickandmorty.utils.showLoading
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
 import com.jakewharton.rxbinding2.view.clicks
-import com.kennyc.view.MultiStateView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -68,10 +72,12 @@ class CharacterDetailActivity : AppCompatActivity() {
     }
 
     private fun render(state: CharacterDetailViewState) {
-        val viewState =
-            if (state.isLoading) MultiStateView.ViewState.LOADING else MultiStateView.ViewState.CONTENT
         with(binding) {
-            msvContainer.viewState = viewState
+            if (state.isLoading) {
+                msvContainer.showLoading()
+                return
+            }
+            msvContainer.showContent()
             Glide.with(this@CharacterDetailActivity)
                 .load(state.character.image)
                 .into(ivImage)
@@ -86,8 +92,25 @@ class CharacterDetailActivity : AppCompatActivity() {
             is CharacterDetailEffect.BackPressedEffect ->
                 finish()
 
-            is CharacterDetailEffect.ShowErrorNotificationEffect ->
-                Log.d("TAG", "produce: Error = ${effect.cause.message}")
+            is CharacterDetailEffect.ShowErrorNotificationEffect -> {
+                with(binding) {
+                    msvContainer.showError()
+                    val tvErrorMessage =
+                        msvContainer.getView<MaterialTextView>(R.id.tv_error_message)
+                    tvErrorMessage?.text = effect.cause.message
+                    val btnTryAgain = msvContainer.getView<MaterialButton>(R.id.btn_try_again)
+                    btnTryAgain?.setOnClickListener {
+                        msvContainer.showLoading()
+                        refresh()
+                    }
+                }
+            }
         }
+    }
+
+    private fun refresh() {
+        viewModel.processIntents(
+            Observable.just(CharacterDetailIntent.LoadCharacterDetailIntent(characterId = intent.getIntExtra(ActionConstant.CHARACTER_ID, 0)))
+        )
     }
 }
