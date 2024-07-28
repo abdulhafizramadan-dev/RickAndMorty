@@ -19,6 +19,7 @@ import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDet
 import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDetailViewState
 import com.gojek.rickandmorty.utils.ActionConstant
 import com.jakewharton.rxbinding2.view.clicks
+import com.kennyc.view.MultiStateView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -67,7 +68,10 @@ class CharacterDetailActivity : AppCompatActivity() {
     }
 
     private fun render(state: CharacterDetailViewState) {
+        val viewState =
+            if (state.isLoading) MultiStateView.ViewState.LOADING else MultiStateView.ViewState.CONTENT
         with(binding) {
+            msvContainer.viewState = viewState
             Glide.with(this@CharacterDetailActivity)
                 .load(state.character.image)
                 .into(ivImage)

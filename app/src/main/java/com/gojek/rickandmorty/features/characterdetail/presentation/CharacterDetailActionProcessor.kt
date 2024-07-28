@@ -10,6 +10,7 @@ import com.gojek.rickandmorty.features.characterdetail.presentation.CharacterDet
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.ObservableTransformer
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class CharacterDetailActionProcessor @Inject constructor(
@@ -39,6 +40,7 @@ class CharacterDetailActionProcessor @Inject constructor(
                     .map { character -> LoadCharacterDetailResult.Success(character) as LoadCharacterDetailResult }
                     .onErrorReturn { cause -> LoadCharacterDetailResult.Failure(cause) }
                     .flatMapObservable { Observable.just(it) }
+                    .delay(1, TimeUnit.SECONDS)
             }
         }
 }
