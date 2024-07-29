@@ -1,8 +1,11 @@
 package com.gojek.rickandmorty.di
 
 import android.content.Context
-import com.gojek.rickandmorty.MainActivity
-import com.gojek.rickandmorty.features.characterdetail.ui.CharacterDetailActivity
+import com.gojek.character.detail.di.CharacterDetailComponent
+import com.gojek.character.detail.di.CharacterDetailModule
+import com.gojek.characters.data.remote.RickAndMortyApi
+import com.gojek.characters.di.CharactersComponent
+import com.gojek.characters.di.CharactersModule
 import dagger.BindsInstance
 import dagger.Component
 
@@ -13,6 +16,8 @@ interface RickAndMortyComponent {
         fun create(@BindsInstance context: Context): RickAndMortyComponent
     }
 
-    fun inject(activity: MainActivity)
-    fun inject(activity: CharacterDetailActivity)
+    fun rickAndMortyApi(): RickAndMortyApi
+
+    fun charactersComponent(): CharactersComponent.Factory
+    fun characterDetailComponent(): CharacterDetailComponent.Factory
 }

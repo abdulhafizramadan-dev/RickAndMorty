@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.gojek.base"
+    namespace = "com.gojek.character.detail"
     compileSdk = 34
 
     defaultConfig {
@@ -24,6 +24,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -34,12 +37,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":base"))
+    implementation(project(":features:characters:characters-shared-domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
 
     implementation(libs.multistateview)
 
@@ -48,6 +51,12 @@ dependencies {
 
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
+    implementation(libs.rxbinding.kotlin)
+
+    implementation(libs.shimmer)
+    implementation(libs.multistateview)
+
+    implementation(libs.glide)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

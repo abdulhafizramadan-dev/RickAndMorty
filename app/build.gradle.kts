@@ -40,16 +40,17 @@ android {
 }
 
 dependencies {
+    implementation(project(":base"))
+    implementation(project(":features:characters:characters"))
+    implementation(project(":features:characters:characters-shared-domain"))
+
+    implementation(project(":features:character-detail:character-detail"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
-    implementation(project(":base"))
-    implementation(project(":features:characters:characters"))
-    implementation(project(":features:characters:characters-shared-domain"))
 
     implementation(libs.shimmer)
     implementation(libs.multistateview)
@@ -67,8 +68,8 @@ dependencies {
 
     implementation(libs.glide)
 
-    debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
-    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
+    debugImplementation(libs.library)
+    releaseImplementation(libs.library.no.op)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

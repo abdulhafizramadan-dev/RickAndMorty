@@ -16,7 +16,7 @@
         android:theme="@style/Theme.RickAndMorty"
         tools:targetApi="31">
         <activity
-            android:name=".features.characterdetail.ui.CharacterDetailActivity"
+            android:name="com.gojek.character.detail.ui.CharacterDetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.gojek.rickandmorty.action.SHOW_DETAIL" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.gojek.characters.ui.CharactersActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

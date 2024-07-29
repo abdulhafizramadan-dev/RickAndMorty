@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/character-detail" />
+            <option value="$PROJECT_DIR$/features/character-detail/character-detail" />
             <option value="$PROJECT_DIR$/features/characters" />
             <option value="$PROJECT_DIR$/features/characters/characters" />
             <option value="$PROJECT_DIR$/features/characters/characters-shared-domain" />
