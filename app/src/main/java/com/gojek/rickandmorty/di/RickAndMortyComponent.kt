@@ -3,7 +3,6 @@ package com.gojek.rickandmorty.di
 import android.content.Context
 import com.gojek.character.detail.di.CharacterDetailComponent
 import com.gojek.character.detail.di.CharacterDetailModule
-import com.gojek.characters.data.remote.RickAndMortyApi
 import com.gojek.characters.di.CharactersComponent
 import com.gojek.characters.di.CharactersModule
 import dagger.BindsInstance
@@ -15,8 +14,6 @@ interface RickAndMortyComponent {
     interface Factory {
         fun create(@BindsInstance context: Context): RickAndMortyComponent
     }
-
-    fun rickAndMortyApi(): RickAndMortyApi
 
     fun charactersComponent(): CharactersComponent.Factory
     fun characterDetailComponent(): CharacterDetailComponent.Factory
