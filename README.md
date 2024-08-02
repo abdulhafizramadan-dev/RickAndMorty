@@ -24,4 +24,4 @@ Show list of characters in https://rickandmortyapi.com/ this using `character/{i
 
 ### Demo
 
-[![Watch the video](/images/home-screen.png)](/demo/demo.mp4)
+https://github.com/user-attachments/assets/7afd94ea-ba73-4cf5-8e01-b7a18bbed0c1
