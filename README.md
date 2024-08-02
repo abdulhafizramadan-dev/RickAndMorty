@@ -21,3 +21,7 @@ Show list of characters in https://rickandmortyapi.com/ this using `character` e
 Show list of characters in https://rickandmortyapi.com/ this using `character/{id}` endpoint
 
 <img src="/images/detail-screen.png" width="30%"/>
+
+### Demo
+
+[![Watch the video](/images/home-screen.png)](/demo/demo.mp4)
