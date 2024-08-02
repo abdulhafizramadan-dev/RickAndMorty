@@ -38,6 +38,8 @@ android {
 
 dependencies {
     implementation(project(":base"))
+    implementation(project(":core"))
+    implementation(project(":features:characters:characters"))
     implementation(project(":features:characters:characters-shared-domain"))
 
     implementation(libs.androidx.core.ktx)

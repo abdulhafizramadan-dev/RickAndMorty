@@ -1,14 +1,33 @@
 package com.gojek.character.detail.di
 
 import com.gojek.character.detail.ui.CharacterDetailActivity
-import dagger.Subcomponent
+import com.gojek.characters.di.CharactersComponent
+import com.gojek.characters.di.CharactersComponentProvider
+import dagger.Component
 
-@Subcomponent
+@Component(dependencies = [CharactersComponent::class], modules = [CharacterDetailModule::class])
+@CharacterDetailScope
 interface CharacterDetailComponent {
-    @Subcomponent.Factory
-    interface Factory {
-        fun create(): CharacterDetailComponent
+    fun inject(activity: CharacterDetailActivity)
+}
+
+object CharacterDetailComponentProvider {
+    private var component: CharacterDetailComponent? = null
+
+    @Synchronized
+    fun get(): CharacterDetailComponent {
+        if (component == null) {
+            throw IllegalStateException("CharacterDetailComponent is not initialized")
+        }
+        return component!!
     }
 
-    fun inject(activity: CharacterDetailActivity)
+    fun init(): CharacterDetailComponent {
+        if (component == null) {
+            component = DaggerCharacterDetailComponent.builder()
+                .charactersComponent(CharactersComponentProvider.get())
+                .build()
+        }
+        return component!!
+    }
 }

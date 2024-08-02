@@ -6,6 +6,7 @@ import com.gojek.base.presentation.MviAction
 import com.gojek.base.presentation.MviResult
 import com.gojek.base.utils.ViewModelFactory
 import com.gojek.characters.data.CharacterRepositoryImpl
+import com.gojek.characters.data.remote.RickAndMortyApi
 import com.gojek.characters.presentation.CharactersActionProcessor
 import com.gojek.characters.presentation.CharactersViewModel
 import com.gojek.characters.shared.domain.repository.CharacterRepository
@@ -15,10 +16,12 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import io.reactivex.ObservableTransformer
+import retrofit2.Retrofit
+import retrofit2.create
 import javax.inject.Named
 import javax.inject.Provider
 
-@Module(subcomponents = [CharactersComponent::class])
+@Module
 abstract class CharactersModule {
     @Binds
     abstract fun bindsCharacterRepository(
@@ -49,6 +52,11 @@ abstract class CharactersModule {
                     }
                 )
             )
+        }
+
+        @Provides
+        fun providesRickAndMortyApi(retrofit: Retrofit): RickAndMortyApi {
+            return retrofit.create()
         }
     }
 }

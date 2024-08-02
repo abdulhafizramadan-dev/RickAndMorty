@@ -42,7 +42,7 @@ class CharacterDetailActivity : AppCompatActivity() {
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as CharacterDetailComponentProvider).provideCharacterDetailComponent().inject(this)
+        CharacterDetailComponentProvider.init().inject(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityCharacterDetailBinding.inflate(layoutInflater)

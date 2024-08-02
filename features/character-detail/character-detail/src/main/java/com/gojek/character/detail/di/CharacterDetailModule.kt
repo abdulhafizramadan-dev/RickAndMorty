@@ -16,7 +16,7 @@ import io.reactivex.ObservableTransformer
 import javax.inject.Named
 import javax.inject.Provider
 
-@Module(subcomponents = [CharacterDetailComponent::class])
+@Module
 abstract class CharacterDetailModule {
     @Binds
     abstract fun bindsGetCharacterDetailUseCase(

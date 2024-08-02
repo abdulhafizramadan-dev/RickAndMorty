@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation(project(":base"))
+    implementation(project(":core"))
     implementation(project(":features:characters:characters-shared-domain"))
 
     implementation(libs.androidx.core.ktx)
@@ -53,7 +54,6 @@ dependencies {
     kapt(libs.dagger.compiler)
 
     implementation(libs.retrofit)
-    implementation(libs.adapter.rxjava2)
     implementation(libs.converter.gson)
 
     implementation(libs.rxjava)
